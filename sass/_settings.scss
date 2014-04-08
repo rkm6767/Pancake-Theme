@@ -1,0 +1,65 @@
+/* ================= */
+/* = Settings = */
+/* ================= */
+
+.tabs {
+  background: transparent !important;
+  border: none !important;
+}
+
+#settings-tabs {
+  height: 100%;
+  background: none;
+  border: none;
+  @include border-radius(2px);
+  li {
+    display: block;
+    width: 100%;
+    float: inherit;
+    background: #efefef;
+    border: none;
+    border-left: 1px solid #ddd;
+    border-right:  1px solid #ddd;
+    @include border-radius(0);
+    margin: 0;
+    padding: 3px 0;
+  }
+  li:first-child {
+    @include border-radius(2px 2px 0px 0px);
+    border-top: 1px solid #ddd;
+  }
+
+  li:last-child {
+    border-bottom: 1px solid #ddd;
+    @include border-radius(0px 0px 2px 2px);
+  }
+}
+
+#tab-content {padding:0;}
+
+.ui-tabs-active, .ui-state-active {background: #f6f6f6 !important; position:relative;}
+.ui-state-active:before {
+  content: url('../img/settings-tab-arrow.png');
+  position: absolute;
+  right: -13px; top:20%;
+}
+
+#importexport .sel-item {
+    margin-bottom: 0;
+}
+
+#importexport .blue-btn {
+    margin: 16px 0 0 0;
+    display: inline-block;
+}
+
+@media all and (max-width:768px) {
+  #settings-tabs li {
+    float: left;
+  }
+  .ui-state-active:before {
+    content: "";
+  }
+
+}
+

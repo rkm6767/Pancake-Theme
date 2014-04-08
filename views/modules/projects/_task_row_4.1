@@ -1,0 +1,58 @@
+<li id="task-row-<?php echo $task['id']; ?>" data-parent-id='<?php echo $task['parent_id']; ?>' class="<?php echo url_title($task['status_title'], '-', true); ?> task-item">
+    <div class='the-task <?php echo isset($timers[$task['id']]) ? 'hover running-timer' : '' ?> <?php echo $is_subtask ? 'sub-the-task' : ''; ?>' style="<?php echo $border_color ? "border-color: $border_color;" : ''; ?>">
+        <span class="task-number"><?php echo $i; ?></span>
+        <span class="task-check"><input type="checkbox" class="complete-check" value="1" <?php echo ((bool) $task['completed'] ? 'checked="checked"' : '') ?> data-task-id="<?php echo $task['id']; ?>" /></span>
+        <span class="task-title">
+            <?php if ($task['status_title']): ?>
+                <span class="task-tag tag-<?php echo $task['status_id'] ?>" style="color: <?php echo $task['font_color'] ?>; background: <?php echo $task['background_color'] ?>; text-shadow: 1px 1px <?php echo $task['text_shadow'] ?>; -webkit-box-shadow:0px 1px 1px 0px <?php echo $task['box_shadow'] ?>; -moz-box-shadow:0px 1px 1px 0px <?php echo $task['box_shadow'] ?>; box-shadow: 0px 1px 1px 0px <?php echo $task['box_shadow'] ?>" ><?php echo $task['status_title'] ?></span>
+            <?php endif ?>
+            <label class="<?php echo ((bool) $task['completed']) ? 'completed' : 'incomplete'; ?>"><?php echo $task['name']; ?></label>
+        </span>
+        <span class="task-timer timer" <?php timer($timers, $task['id']); ?>>
+            <span class="track-time" data-task-id="<?php echo $task['id']; ?>" data-project-id="<?php echo $project->id ?>">
+                <span class="time time-ticker timer-time">00:00:00</span>
+                <a href="#" class="play timer-button" title="<?php echo __('global:start') ?>" data-start="<?php echo __('global:start') ?>" data-stop="<?php echo __('global:stop') ?>"><i class="fi-play"></i><i class="fi-pause"></i></a>
+                <a href="#" class="stop timer-button" title="<?php echo __('global:stop') ?>"><i class="fi-stop"></i></a>
+            </span>
+        </span>
+        <span class="task-tools">
+            <a class="task-notes-link" title="Task Notes" href="#" data-pancake-modal-id="notes-<?php echo $task['id'] ?>"><i class="fi-page-add"></i></a>
+            <a title="<?php echo __('tasks:view_entries'); ?>" href="<?php echo site_url('admin/projects/times/view_entries/task/' . $task['id']); ?>"><i class="fi-clock"></i></a>
+            <a title="Discuss Task" href="<?php echo site_url('/admin/projects/tasks/discussion/' . $task['id']); ?>"><i class="fi-comment"></i></a>
+            <?php if (can('update', get_client('project_tasks', $task['id']), 'project_tasks', $task['id'])): ?>
+                <a class="fire-ajax" title="Edit Task" href="<?php echo site_url('admin/projects/tasks/edit/' . $task['id']) ?>"><i class="fi-pencil"></i></a>
+            <?php endif; ?>
+            <?php if (can('delete', get_client('project_tasks', $task['id']), 'project_tasks', $task['id'])): ?>
+                <a title="Delete Task" href="#" onclick="$('#delete-task-<?php echo $task['id']; ?>').submit();"><i class="fi-x"></i></a>
+            <?php endif; ?>
+            <form action="<?php echo site_url('/admin/projects/tasks/delete/' . $task['id']); ?>" method="post" class="confirm-form" id="delete-task-<?php echo $task['id']; ?>"></form>
+        </span>
+        <?php if (isset($task['assigned_user_email']) and $task['assigned_user_email']): ?>
+            <span class="task-assignee">
+                <img class="avatar" src="<?php echo get_gravatar($task['assigned_user_email'], '40') ?>" />
+            </span>
+        <?php endif; ?>
+    </div>
+    <?php if (!$is_subtask): ?>
+        <div class='clear'></div>
+        <?php $has_tasks = (array_key_exists('subtasks', $task) and count($task['subtasks']) > 0); ?>
+        <ol class='sortable task project-tasks <?php echo $has_tasks ? 'has-tasks' : 'not-has-tasks' ?>' data-border-color='<?php echo $border_color;?>' data-task-id='<?php echo $task['id']; ?>'>
+            <?php if ($has_tasks): ?>
+                <?php $subtask_i = 'A'; ?>
+
+                <?php foreach ($task['subtasks'] as $subtask): ?>
+                    <?php
+                    $this->load->view("_task_row_4.1", array(
+                        'is_subtask' => true,
+                        'border_color' => $border_color,
+                        'task' => $subtask,
+                        'i' => $subtask_i
+                    ));
+                    ?>
+                    <?php $subtask_i++; ?>
+                <?php endforeach; ?>
+
+            <?php endif; ?>
+        </ol>
+    <?php endif; ?>
+</li>

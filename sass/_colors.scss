@@ -1,0 +1,67 @@
+// Pancake v4 Palette ----- *
+
+	// Primary Colors
+	$pancakeBlack: #3d3d3d;
+	$pancakeBlue: #2ecc71;
+
+	// Secondary Colors
+	$pancakeDarkBlue: #1C9750;
+	$pancakeGreen: #2ecc71;
+	$pancakeRed: #E7415D;
+
+	// Greys
+	$pancakeLightGrey: lighten($pancakeBlack,80);
+	$pancakeGrey: lighten($pancakeBlack,40);
+	$pancakeDarkGrey: lighten($pancakeBlack,20);
+
+// ------------------------- *
+
+// blues
+$lblue: #5db4d8;
+$babyBlue: #f0f5f8;
+// $altBlue: #70D3E6;
+$altBlue: #29abe2;
+$darkBlue: #0071bc;
+
+// Reds
+$lred: #cf6767;
+
+// Oranges
+$orange: #dcac5a;
+
+//Watch your brights ;)
+$brightOrange: #ec5f41;
+$brightBlue: #24b0cf;
+$brightGreen: #95d17b;
+
+// Greys
+$white: #fafafa;
+$firstGrey: #f6f6f6;
+$secondGrey: #eee;
+$darkGrey: #4c4c4c;
+
+// Border Colours
+$greyBorder: #ddd;
+$babyBlueBorder: #dde0e7;
+
+// CSS3 Styles
+$borderRadius: 2px;
+$blueBoxShadow: 0px 1px 1px 0px $babyBlueBorder;
+
+// Wheels
+	$wheelOrange: #fb9e60;
+	$wheelBlue: #87ceeb;
+	$wheelRed: #cd5c5c;
+
+// Invoice Colours
+	$iGreen: rgba(126, 185, 90, 1.0);
+	$iRed: rgba(196, 74, 71, 1.0);
+	$iOrange: rgba(192, 117, 57, 1.0);
+	$iBlue: rgba(99, 184, 220, 1.0);
+
+
+// Because typos sometimes happen...
+	$firstGray: $firstGrey;
+	$secondGray: $secondGrey;
+	$darkGray: $darkGrey;
+	$grayBorder: $greyBorder;

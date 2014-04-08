@@ -1,0 +1,8 @@
+# Sass
+.sass-cache
+
+# CodeKit
+config.codekit
+
+# Sublime Text SFTP
+sftp-config.json
