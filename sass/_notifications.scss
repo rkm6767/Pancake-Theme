@@ -1,44 +1,39 @@
 /* Notification System */
 .meows {
-    
+
     a {
         color: $white;
         font-weight: bold;
     }
-    
-  margin-top: 40px;
+
+  margin-top: 45px;
   .inner {
-    @include border-radius(6px !important);
-    padding: 8px !important;
-    background: #222 !important;
-    border: 1px solid #111 !important;
+    @include border-radius(2px !important);
+    opacity: 1 !important;
+    @include box-shadow(0px 3px 6px rgba(black,0.2) !important);
+    padding: 12px !important;
+    background: rgba(black, 0.6) !important;
+    border: 0 !important;
+    text-shadow: none !important;
+    font-family: 'Open Sans', sans-serif !important;
     h1 {
-      float: right;
-      width: 86%;
-      color: $white;
-      margin-bottom: 4px !important;
+      display: none !important;
     }
     img {
-      max-width: 11%;
-      float: left;
-      margin-right: 3%;
-      @include border-radius($borderRadius);
+      display: none !important;
     }
     .notification-text {
       font-size: 13px !important;
       font-size: 1.3rem !important;
       line-height: 1.4;
       font-weight: 400;
-      float: right; 
       width: 86%;
-    }
-    .notification-text:after {
-      clear: right;
     }
     .close {
       left: auto !important;
-      right: 4px;
-      font-size: 15px !important;
+      top: 8px !important;
+      right: 8px !important;
+      font-size: 14px !important;
       height: 18px !important;
       width: 18px !important;
       opacity: 0.6 !important;
